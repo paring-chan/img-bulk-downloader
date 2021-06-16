@@ -12,6 +12,11 @@ setImmediate(async () => {
         {
             message: '셀렉터',
             name: 'selector'
+        },
+        {
+            message: 'prefix',
+            name: 'prefix',
+            default: ''
         }
     ]).then(async (data) => {
         const res = await fetch(data.url).then(x => x.text())
@@ -24,8 +29,8 @@ setImmediate(async () => {
                 let img = image
                 if (image.startsWith('//')) img = 'http:' + image
                 console.log(`Downloading: ${img}`)
-                const data = await fetch(img).then(x => x.buffer())
-                require('fs').writeFileSync(require('path').join(process.cwd(), 'download', iterator + '.' + img.split('.').pop()), data)
+                const buffer = await fetch(img).then(x => x.buffer())
+                require('fs').writeFileSync(require('path').join(process.cwd(), 'download', data.prefix + iterator + '.' + img.split('.').pop()), buffer)
                 iterator++
             }
         }
