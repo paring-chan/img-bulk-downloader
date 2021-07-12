@@ -11,3 +11,6 @@ npm i -g @pikostudio/img-bulk-downloader
 ```
 imgdown
 ```
+
+### 제작할때 사용한 코드
+- 스크롤 https://stackoverflow.com/a/53527984
